@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/register_title"
+        android:textSize="30sp"
+        android:textColor="@color/orange"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:id="@+id/et_account_register"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/account_input"
+        android:gravity="center"
+        android:inputType="number"/>
+
+    <EditText
+        android:id="@+id/et_password_register"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/pwd_input"
+        android:gravity="center"
+        android:inputType="textPassword"/>
+
+    <EditText
+        android:id="@+id/et_password_confirm"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/confirm_pwd_input"
+        android:gravity="center"
+        android:inputType="textPassword"/>
+
+    <RadioGroup
+        android:id="@+id/radio_identity"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/radio_applicant"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/radio_applicant" />
+
+        <RadioButton
+            android:id="@+id/radio_hr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/radio_hr" />
+
+    </RadioGroup>
+
+    <Button
+        android:layout_marginTop="10dp"
+        android:id="@+id/btn_signUp"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="@string/register_title" />
+
+
+
+</LinearLayout>

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_job_item"
+    android:orientation="vertical"
+    android:layout_marginTop="10dp"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_job_item"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp">
+
+        <TextView
+            android:id="@+id/job_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:ellipsize="end"
+            android:maxEms="11"
+            android:singleLine="true"
+            android:text="Linux软件开发工程师(SZ)"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/job_way"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="5dp"
+            android:layout_toEndOf="@+id/job_name"
+            android:background="@drawable/shape_round_grey"
+            android:padding="2dp"
+            android:text="校招"
+            android:textAlignment="center"
+            android:textColor="@color/lt_blue"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:text="3k-5k"
+            android:textColor="@color/money"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_job_item"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp">
+
+        <TextView
+            android:id="@+id/job_require_position"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_round_grey"
+            android:text="全职"
+            android:textSize="10sp"
+            android:padding="4dp"
+            tools:ignore="SmallSp" />
+
+        <TextView
+            android:id="@+id/job_require_education"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_round_grey"
+            android:layout_marginStart="10dp"
+            android:text="本科"
+            android:textSize="10sp"
+            android:padding="4dp"
+            tools:ignore="SmallSp" />
+
+        <TextView
+            android:id="@+id/job_require_experience"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_round_grey"
+            android:layout_marginStart="10dp"
+            android:text="经验不限"
+            android:textSize="10sp"
+            android:padding="4dp"
+            tools:ignore="SmallSp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_job_item"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp">
+
+        <ImageView
+            android:id="@+id/job_icon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/search_icon"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="常州建科股份"
+            android:textSize="13sp"
+            android:textColor="@color/dk_grey"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_job_item"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginEnd="10dp">
+
+        <TextView
+            android:id="@+id/job_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="检测/认证"
+            android:textColor="@color/dk_grey"
+            android:textSize="11sp"/>
+
+        <TextView
+            android:id="@+id/company_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@+id/job_type"
+            android:text="股份制企业"
+            android:textColor="@color/dk_grey"
+            android:textSize="11sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@+id/company_type"
+            android:text="1000-9000人"
+            android:textColor="@color/dk_grey"
+            android:textSize="11sp"/>
+
+        <TextView
+            android:id="@+id/job_city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="苏州"
+            android:textSize="11sp"/>
+
+    </RelativeLayout>
+
+</LinearLayout>
