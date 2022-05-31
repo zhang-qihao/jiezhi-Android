@@ -19,12 +19,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.zqh.mysystem.R;
+import com.zqh.mysystem.bean.job_infos;
 import com.zqh.mysystem.utils.HttpUtil;
 import com.zqh.mysystem.utils.JsonParseUtil;
 
-import org.w3c.dom.Text;
-
 import java.io.IOException;
+import java.util.ArrayList;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -42,6 +42,8 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
 
     final String POSITION_FULL = "quanzhi";
     final String POSITION_PART = "shixi";
+
+    ArrayList<job_infos> jobs = new ArrayList<>();
 
     TextView tv_quanzhi, tv_shixi, line_quanzhi, line_shixi;
     TextView tv_tuijian, tv_golang, tv_android, tv_c;
@@ -89,9 +91,11 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
         tv_c.setOnClickListener(this);
         // 搜索框监听事件
         et_search.setOnEditorActionListener(new myOnEditorActionListener());
+    }
 
+    void onSetAdapter() {
         // 绑定 adapter
-        rv.setLayoutManager(new LinearLayoutManager(this));
+        rv.setLayoutManager(new LinearLayoutManager(HomePage.this));
         rv.setAdapter(new myAdapter());
     }
 
@@ -102,7 +106,7 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
      * @date 2022/5/31
      */
     void httpRequest() {
-        HttpUtil.sendRequestWithOkhttp("http://localhost:8080/getJob", new Callback() {
+        HttpUtil.sendRequestWithOkhttp("http://139.196.72.52:8080/getJob", new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 Log.e("HomePage", "HTTP 请求失败");
@@ -111,7 +115,13 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 Log.i("HomePage", "HTTP 请求成功");
-                JsonParseUtil.parseJsonWithJsonObject(response);
+                jobs = JsonParseUtil.parseJsonWithJsonObject(response);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        onSetAdapter(); // 设置 adapter
+                    }
+                });
             }
         });
     }
@@ -246,8 +256,21 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
      */
     class viewHolder extends RecyclerView.ViewHolder {
 
+        TextView job_name, job_salary, job_require_position, job_require_education,
+                job_require_experience, job_company, job_industry, company_type, company_scale, job_address;
+
         public viewHolder(@NonNull View itemView) {
             super(itemView);
+            job_name = itemView.findViewById(R.id.job_name);
+            job_salary = itemView.findViewById(R.id.job_salary);
+            job_require_position = itemView.findViewById(R.id.job_require_position);
+            job_require_education = itemView.findViewById(R.id.job_require_education);
+            job_require_experience = itemView.findViewById(R.id.job_require_experience);
+            job_company = itemView.findViewById(R.id.job_company);
+            job_industry = itemView.findViewById(R.id.job_industry);
+            company_type = itemView.findViewById(R.id.company_type);
+            company_scale = itemView.findViewById(R.id.company_scale);
+            job_address = itemView.findViewById(R.id.job_address);
         }
     }
 
@@ -268,12 +291,22 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
 
         @Override
         public void onBindViewHolder(@NonNull viewHolder holder, int position) {
-
+            holder.job_name.setText(jobs.get(position).getTitle());
+            holder.job_salary.setText(jobs.get(position).getSalary());
+            holder.job_require_education.setText(jobs.get(position).getEducation());
+            holder.job_require_experience.setText(jobs.get(position).getExperience());
+            holder.job_require_experience.setText(jobs.get(position).getExperience());
+            holder.job_company.setText(jobs.get(position).getShortName());
+            holder.job_industry.setText(jobs.get(position).getIndustry());
+            holder.company_type.setText(jobs.get(position).getCompanyType());
+            holder.company_scale.setText(jobs.get(position).getScale());
+            holder.job_address.setText(jobs.get(position).getAddress());
+            holder.job_require_position.setText(jobs.get(position).getNature());
         }
 
         @Override
         public int getItemCount() {
-            return 10;
+            return jobs.size();
         }
     }
 }
