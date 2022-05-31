@@ -19,8 +19,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.zqh.mysystem.R;
+import com.zqh.mysystem.utils.HttpUtil;
+import com.zqh.mysystem.utils.JsonParseUtil;
 
 import org.w3c.dom.Text;
+
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 /**
  * @projectName: MySystem
@@ -45,6 +53,7 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+        httpRequest();
         init();
     }
 
@@ -84,6 +93,27 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
         // 绑定 adapter
         rv.setLayoutManager(new LinearLayoutManager(this));
         rv.setAdapter(new myAdapter());
+    }
+
+    /**
+     * @return void
+     * @author Zhangqihao
+     * @description /getJob HTTP 请求
+     * @date 2022/5/31
+     */
+    void httpRequest() {
+        HttpUtil.sendRequestWithOkhttp("http://localhost:8080/getJob", new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e("HomePage", "HTTP 请求失败");
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                Log.i("HomePage", "HTTP 请求成功");
+                JsonParseUtil.parseJsonWithJsonObject(response);
+            }
+        });
     }
 
     /**
