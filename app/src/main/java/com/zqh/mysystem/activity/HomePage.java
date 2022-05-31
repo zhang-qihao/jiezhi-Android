@@ -93,6 +93,12 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
         et_search.setOnEditorActionListener(new myOnEditorActionListener());
     }
 
+    /**
+     * @return void
+     * @author Zhangqihao
+     * @description recyclerView 设置 adapter
+     * @date 2022/5/31
+     */
     void onSetAdapter() {
         // 绑定 adapter
         rv.setLayoutManager(new LinearLayoutManager(HomePage.this));
@@ -106,7 +112,9 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
      * @date 2022/5/31
      */
     void httpRequest() {
-        HttpUtil.sendRequestWithOkhttp("http://139.196.72.52:8080/getJob", new Callback() {
+        String url = "http://139.196.72.52:8080/getJob";
+        Log.i("HomePage", "Try url: " + url);
+        HttpUtil.sendRequestWithOkhttp(url, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 Log.e("HomePage", "HTTP 请求失败");
@@ -116,7 +124,8 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
             public void onResponse(Call call, Response response) throws IOException {
                 Log.i("HomePage", "HTTP 请求成功");
                 jobs = JsonParseUtil.parseJsonWithJsonObject(response);
-                runOnUiThread(new Runnable() {
+                Log.i("HomePage", "display: " + jobs.size());
+                runOnUiThread(new Runnable() { // 子线程的回调函数中调用 runOnUiThread 函数回到主线程更新UI
                     @Override
                     public void run() {
                         onSetAdapter(); // 设置 adapter
@@ -242,7 +251,9 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
         }
 
         void doSearchJob(String query) {
-            startActivity(new Intent(HomePage.this, SearchResult.class));
+            Intent intent = new Intent(HomePage.this, SearchResult.class);
+            intent.putExtra("query", query);
+            startActivity(intent);
         }
     }
 
