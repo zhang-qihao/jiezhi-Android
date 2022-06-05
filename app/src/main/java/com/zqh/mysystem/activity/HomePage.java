@@ -267,11 +267,12 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
      */
     class viewHolder extends RecyclerView.ViewHolder {
 
-        TextView job_name, job_salary, job_require_position, job_require_education,
+        TextView jid, job_name, job_salary, job_require_position, job_require_education,
                 job_require_experience, job_company, job_industry, company_type, company_scale, job_address;
 
         public viewHolder(@NonNull View itemView) {
             super(itemView);
+            jid = itemView.findViewById(R.id.tv_jid);
             job_name = itemView.findViewById(R.id.job_name);
             job_salary = itemView.findViewById(R.id.job_salary);
             job_require_position = itemView.findViewById(R.id.job_require_position);
@@ -282,6 +283,15 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
             company_type = itemView.findViewById(R.id.company_type);
             company_scale = itemView.findViewById(R.id.company_scale);
             job_address = itemView.findViewById(R.id.job_address);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent();
+                    intent.putExtra("jid", jid.getText().toString());
+                    intent.setClass(HomePage.this, JobDetail.class);
+                    startActivity(intent);
+                }
+            });
         }
     }
 
@@ -302,6 +312,7 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
 
         @Override
         public void onBindViewHolder(@NonNull viewHolder holder, int position) {
+            holder.jid.setText(jobs.get(position).getJid());
             holder.job_name.setText(jobs.get(position).getTitle());
             holder.job_salary.setText(jobs.get(position).getSalary());
             holder.job_require_education.setText(jobs.get(position).getEducation());

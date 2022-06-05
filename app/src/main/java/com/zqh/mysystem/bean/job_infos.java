@@ -9,6 +9,7 @@ package com.zqh.mysystem.bean;
  * @date: 2022/5/31
  */
 public class job_infos {
+    String jid;
     String title;
     String shortName;
     String salary;
@@ -20,8 +21,9 @@ public class job_infos {
     String companyType;
     String nature;
 
-    public job_infos(String title, String shortName, String salary, String education, String experience, String address,
+    public job_infos(String jid, String title, String shortName, String salary, String education, String experience, String address,
                      String industry, String scale, String companyType, String nature) {
+        this.jid = jid;
         this.title = title;
         this.shortName = shortName;
         this.salary = salary;
@@ -32,6 +34,14 @@ public class job_infos {
         this.scale = scale;
         this.companyType = companyType;
         this.nature = nature;
+    }
+
+    public String getJid() {
+        return jid;
+    }
+
+    public void setJid(String jid) {
+        this.jid = jid;
     }
 
     public String getTitle() {

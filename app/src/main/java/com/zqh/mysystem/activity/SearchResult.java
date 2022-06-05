@@ -11,7 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.zqh.mysystem.R;
@@ -40,6 +40,7 @@ public class SearchResult extends AppCompatActivity {
     String query;
 
     RecyclerView rv;
+    ImageView back_home;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +59,16 @@ public class SearchResult extends AppCompatActivity {
      */
     private void init() {
         rv = findViewById(R.id.job_search);
+        back_home = findViewById(R.id.back_home);
+
+        back_home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setClass(SearchResult.this, HomePage.class);
+                startActivity(intent);
+            }
+        });
     }
 
     /**
@@ -124,11 +135,12 @@ public class SearchResult extends AppCompatActivity {
      */
     class viewHolder extends RecyclerView.ViewHolder {
 
-        TextView job_name, job_salary, job_require_position, job_require_education,
+        TextView jid, job_name, job_salary, job_require_position, job_require_education,
                 job_require_experience, job_company, job_industry, company_type, company_scale, job_address;
 
         public viewHolder(@NonNull View itemView) {
             super(itemView);
+            jid = itemView.findViewById(R.id.tv_jid);
             job_name = itemView.findViewById(R.id.job_name);
             job_salary = itemView.findViewById(R.id.job_salary);
             job_require_position = itemView.findViewById(R.id.job_require_position);
@@ -139,6 +151,15 @@ public class SearchResult extends AppCompatActivity {
             company_type = itemView.findViewById(R.id.company_type);
             company_scale = itemView.findViewById(R.id.company_scale);
             job_address = itemView.findViewById(R.id.job_address);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent();
+                    intent.putExtra("jid", jid.getText().toString());
+                    intent.setClass(SearchResult.this, JobDetail.class);
+                    startActivity(intent);
+                }
+            });
         }
     }
 
@@ -159,6 +180,7 @@ public class SearchResult extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(@NonNull viewHolder holder, int position) {
+            holder.jid.setText(jobs.get(position).getJid());
             holder.job_name.setText(jobs.get(position).getTitle());
             holder.job_salary.setText(jobs.get(position).getSalary());
             holder.job_require_education.setText(jobs.get(position).getEducation());

@@ -72,7 +72,7 @@
                 android:layout_height="20dp"
                 android:layout_gravity="center"
                 android:layout_marginStart="5dp"
-                android:background="@drawable/search_icon" />
+                android:background="@drawable/icon_search" />
 
             <EditText
                 android:id="@+id/et_search"
@@ -120,7 +120,7 @@
                 android:layout_below="@+id/mingqi_title"
                 android:layout_alignStart="@+id/mingqi_title"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/search_icon" />
+                android:background="@drawable/icon_home" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -149,7 +149,7 @@
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:background="@drawable/search_icon"/>
+                    android:background="@drawable/icon_book"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -174,7 +174,7 @@
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:background="@drawable/search_icon"/>
+                    android:background="@drawable/icon_exit"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -243,7 +243,7 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="15dp"
-            android:background="@drawable/search_icon" />
+            android:background="@drawable/icon_add" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -259,22 +259,22 @@
             android:textSize="13sp"
             android:layout_marginStart="15dp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="城市"
-            android:textSize="13sp"
-            android:layout_toStartOf="@+id/xiala"
-            android:layout_marginEnd="5dp"/>
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginEnd="5dp"-->
+<!--            android:layout_toStartOf="@+id/xiala"-->
+<!--            android:text="城市"-->
+<!--            android:textSize="13sp" />-->
 
-        <ImageView
-            android:id="@+id/xiala"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:background="@drawable/search_icon"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="15dp"
-            android:layout_centerVertical="true"/>
+<!--        <ImageView-->
+<!--            android:id="@+id/xiala"-->
+<!--            android:layout_width="15dp"-->
+<!--            android:layout_height="15dp"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:layout_marginEnd="15dp"-->
+<!--            android:background="@drawable/icon_search" />-->
     </RelativeLayout>
 
     <LinearLayout
