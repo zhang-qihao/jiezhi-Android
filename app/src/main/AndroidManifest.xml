@@ -14,6 +14,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MySystem">
         <activity
+            android:name=".activity.CheckPost"
+            android:exported="false" />
+        <activity
+            android:name=".activity.PublishJob"
+            android:exported="false" />
+        <activity
+            android:name=".activity.CompanyHome"
+            android:exported="false" />
+        <activity
             android:name=".activity.JobDetail"
             android:exported="false" />
         <activity

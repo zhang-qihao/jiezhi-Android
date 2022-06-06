@@ -6,7 +6,10 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.zqh.mysystem.R;
 import com.zqh.mysystem.bean.job_infos;
@@ -25,6 +28,7 @@ public class JobDetail extends AppCompatActivity {
     ArrayList<job_infos> jobs = new ArrayList<>();
 
     TextView job_name, salary, location, job_require;
+    Button btn_post;
     String jid;
 
     @Override
@@ -40,7 +44,22 @@ public class JobDetail extends AppCompatActivity {
         salary = findViewById(R.id.tv_detail_salary);
         location = findViewById(R.id.tv_detail_location);
         job_require = findViewById(R.id.tv_detail_require);
+        btn_post = findViewById(R.id.btn_post);
 
+        GetIntent();
+
+        btn_post.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (postResume(jid))
+                    Toast.makeText(JobDetail.this, "投递成功", Toast.LENGTH_SHORT).show();
+                else
+                    Toast.makeText(JobDetail.this, "投递失败", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void GetIntent() {
         Intent intent = getIntent();
         jid = intent.getStringExtra("jid");
     }
@@ -55,14 +74,26 @@ public class JobDetail extends AppCompatActivity {
     }
 
     /**
+     * @param query: jid
      * @return void
      * @author Zhangqihao
-     * @description /getJob HTTP 请求
-     * @date 2022/5/31
+     * @description /postResume HTTP 请求
+     * @date 2022/6/6
+     */
+    private boolean postResume(String query) {
+        return true;
+    }
+
+    /**
+     * @param query: jid
+     * @return void
+     * @author Zhangqihao
+     * @description /JobDetail HTTP 请求
+     * @date 2022/6/5
      */
     private void httpRequest(String query) {
-        Log.i("JobDetail", "jid: " + jid);
-        String url = "http://139.196.72.52:8080/getJobDetail/?jid=" + jid;
+        Log.i("JobDetail", "jid: " + query);
+        String url = "http://139.196.72.52:8080/getJobDetail/?jid=" + query;
         Log.i("JobDetail", "Try url: " + url);
         HttpUtil.sendRequestWithOkhttp(url , new Callback() {
             @Override

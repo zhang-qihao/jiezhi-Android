@@ -106,13 +106,13 @@
             android:id="@+id/job_icon"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:background="@drawable/icon_search"/>
+            android:background="@drawable/icon_book2"/>
 
         <TextView
             android:id="@+id/job_company"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="5dp"
             android:layout_gravity="center_vertical"
             android:text="常州建科股份"
             android:textSize="13sp"

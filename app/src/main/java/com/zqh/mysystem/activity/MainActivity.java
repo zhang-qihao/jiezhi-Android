@@ -258,7 +258,13 @@ public class MainActivity extends AppCompatActivity {
             Log.i("Login", "[登陆成功] | identity:" + user.getIdentity());
             new rememberPwd().remember(user); // 存储 sharedPreferences
             Toast.makeText(MainActivity.this, "登陆成功", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent().setClass(MainActivity.this, HomePage.class));
+            Intent intent = new Intent();
+            if (identity.equals("applicant"))
+                intent.setClass(MainActivity.this, HomePage.class);
+            else
+                intent.setClass(MainActivity.this, CompanyHome.class);
+            intent.putExtra("account", account_input);
+            startActivity(intent);
         }
         // 账号或密码错误
         private void wrongAccount() {
