@@ -112,7 +112,7 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
      * @date 2022/5/31
      */
     void httpRequest() {
-        String url = "http://139.196.72.52:8080/getJob";
+        String url = "http://139.196.72.52:8080/v1/getJob";
         Log.i("HomePage", "Try url: " + url);
         HttpUtil.sendRequestWithOkhttp(url, new Callback() {
             @Override

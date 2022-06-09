@@ -51,7 +51,7 @@ public class PublishJob extends AppCompatActivity {
                     json.put("jid", intent.getStringExtra("jid"));
                     json.put("title", title.getText().toString());
                     json.put("salary", salary.getText().toString());
-                    json.put("address", salary.getText().toString());
+                    json.put("address", address.getText().toString());
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

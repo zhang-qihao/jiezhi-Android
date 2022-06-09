@@ -93,7 +93,7 @@ public class JobDetail extends AppCompatActivity {
      */
     private void httpRequest(String query) {
         Log.i("JobDetail", "jid: " + query);
-        String url = "http://139.196.72.52:8080/getJobDetail?jid=" + query;
+        String url = "http://139.196.72.52:8080/v1/getJobDetail?jid=" + query;
         Log.i("JobDetail", "Try url: " + url);
         HttpUtil.sendRequestWithOkhttp(url , new Callback() {
             @Override
