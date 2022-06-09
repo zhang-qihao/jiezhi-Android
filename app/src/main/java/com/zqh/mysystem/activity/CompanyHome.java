@@ -39,7 +39,7 @@ public class CompanyHome extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             Intent intent = new Intent();
-            intent.putExtra("account", account);
+            intent.putExtra("jid", account);
             if (view.getId() == R.id.btn_publish_job)
                 intent.setClass(CompanyHome.this, PublishJob.class);
             else

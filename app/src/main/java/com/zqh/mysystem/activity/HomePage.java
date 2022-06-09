@@ -118,12 +118,13 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
             @Override
             public void onFailure(Call call, IOException e) {
                 Log.e("HomePage", "HTTP 请求失败");
+                Log.e("HomePage", e.toString());
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 Log.i("HomePage", "HTTP 请求成功");
-                jobs = JsonParseUtil.parseJsonWithJsonObject(response);
+                jobs = JsonParseUtil.parseJobObject(response);
                 Log.i("HomePage", "display: " + jobs.size());
                 runOnUiThread(new Runnable() { // 子线程的回调函数中调用 runOnUiThread 函数回到主线程更新UI
                     @Override

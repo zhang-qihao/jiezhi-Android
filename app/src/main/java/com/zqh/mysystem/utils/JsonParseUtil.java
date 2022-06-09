@@ -32,7 +32,7 @@ public class JsonParseUtil {
      * @description 将 JSON 格式数据解析为 job_infos 类型数组
      * @date 2022/5/31
      */
-    public static ArrayList<job_infos> parseJsonWithJsonObject(Response response) throws IOException {
+    public static ArrayList<job_infos> parseJobObject(Response response) throws IOException {
 
         ArrayList<job_infos> arr = new ArrayList<>();
         job_infos job_info;
@@ -89,5 +89,20 @@ public class JsonParseUtil {
         }
 
         return arr;
+    }
+
+
+    public static int parseCode(Response response) throws IOException {
+        int code = 1001;
+        assert response.body() != null;
+        String responseData = response.body().string(); // 从响应中获取数据
+        try {
+            JSONObject jsonData = new JSONObject(responseData);
+            // 获取 'Jobs' 对应的 value 值，转为 JSONArray 格式
+            code = jsonData.getInt("code");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return code;
     }
 }

@@ -21,6 +21,13 @@ public class job_infos {
     String companyType;
     String nature;
 
+    public job_infos(String jid, String title, String salary, String address) {
+        this.jid = jid;
+        this.title = title;
+        this.salary = salary;
+        this.address = address;
+    }
+
     public job_infos(String jid, String title, String shortName, String salary, String education, String experience, String address,
                      String industry, String scale, String companyType, String nature) {
         this.jid = jid;

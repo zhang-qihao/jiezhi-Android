@@ -1,7 +1,14 @@
 package com.zqh.mysystem.utils;
 
+import com.zqh.mysystem.bean.job_infos;
+
+import org.json.JSONObject;
+
+import okhttp3.FormBody;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 
 /**
  * @projectName: MySystem
@@ -25,6 +32,17 @@ public class HttpUtil {
         Request request = new Request.Builder()
                 .url(address)
                 .get()
+                .build();
+        client.newCall(request).enqueue(callback);
+    }
+
+    public static void postJobWithOKHttp(String address, JSONObject json, okhttp3.Callback callback) {
+        OkHttpClient client = new OkHttpClient();
+        RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), String.valueOf(json));
+        Request request = new Request.Builder()
+                .url(address)
+                .addHeader("key", "value")
+                .post(requestBody)
                 .build();
         client.newCall(request).enqueue(callback);
     }

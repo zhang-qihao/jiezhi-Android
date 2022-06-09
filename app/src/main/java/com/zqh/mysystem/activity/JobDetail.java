@@ -93,18 +93,19 @@ public class JobDetail extends AppCompatActivity {
      */
     private void httpRequest(String query) {
         Log.i("JobDetail", "jid: " + query);
-        String url = "http://139.196.72.52:8080/getJobDetail/?jid=" + query;
+        String url = "http://139.196.72.52:8080/getJobDetail?jid=" + query;
         Log.i("JobDetail", "Try url: " + url);
         HttpUtil.sendRequestWithOkhttp(url , new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                Log.e("SearchResult", "HTTP 请求失败");
+                Log.e("JobDetail", "HTTP 请求失败");
+                Log.e("JobDetail", e.toString());
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 Log.i("SearchResult", "HTTP 请求成功");
-                jobs = JsonParseUtil.parseJsonWithJsonObject(response);
+                jobs = JsonParseUtil.parseJobObject(response);
                 Log.i("SearchResult", "display: " + jobs.size());
                 runOnUiThread(new Runnable() { // 子线程的回调函数中调用 runOnUiThread 函数回到主线程更新UI
                     @Override
