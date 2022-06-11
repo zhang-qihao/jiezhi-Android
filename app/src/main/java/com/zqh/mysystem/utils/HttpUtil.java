@@ -36,6 +36,15 @@ public class HttpUtil {
         client.newCall(request).enqueue(callback);
     }
 
+    /**
+     * @param address: url 地址
+     * @param json: 传输数据
+     * @param callback: 回调方法
+     * @return void
+     * @author Zhangqihao
+     * @description post 请求传递 json 格式数据
+     * @date 2022/6/11
+     */
     public static void postJobWithOKHttp(String address, JSONObject json, okhttp3.Callback callback) {
         OkHttpClient client = new OkHttpClient();
         RequestBody requestBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), String.valueOf(json));
